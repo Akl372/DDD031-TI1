@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.content {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.instructions {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* Opções */
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    background-color: #fafafa;
+    transition: background-color 0.2s ease;
+}
+
+.option:hover {
+    background-color: #f3f3f3;
+}
+
+.btn-vote {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid #ccc;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: #666;
+    transition: all 0.2s ease;
+}
+
+.btn-vote:hover {
+    background-color: #4caf50;
+    color: #fff;
+    border-color: #4caf50;
+}
+
+.option-name {
+    font-weight: bold;
+    text-align: center;
+}
+
+.vote-count {
+    color: #666;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Botão de adicionar */
+.btn-add-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid #ccc;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    color: #666;
+    transition: all 0.2s ease;
+}
+
+.btn-add-option:hover {
+    background-color: #4caf50;
+    color: white;
+    border-color: #4caf50;
+}
+
+/* Input totalmente limpo */
+input[type="text"] {
+    border: none;          /* sem borda */
+    outline: none;         /* remove o contorno de foco */
+    background: transparent; /* fundo transparente */
+    padding: 6px 10px;     /* espaço interno */
+    font-size: 14px;
+    color: #333;           /* cor do texto */
+    width: 150px;          /* ajuste de largura */
+    transition: all 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: #4caf50;
+}
+
+/* Botões */
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.btn-confirm {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-confirm:hover {
+    background-color: #43a047;
+}
+
+/* Resultado */
+.result-container {
+    text-align: center;
+}
+
+.winner-image {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+.winner-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.winner-address {
+    color: #666;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-reset {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.btn-reset:hover {
+    background-color: #43a047;
+}
+
+.hidden {
+    display: none;
+}
