@@ -5,7 +5,10 @@
     "descricao": "Um dos principais pontos turísticos de Belo Horizonte, com belos jardins e cercada por museus.",
     "endereco": "Praça da Liberdade, s/n - Funcionários, Belo Horizonte - MG",
     "tags": ["turismo", "cultura", "lazer", "dates"],
-    "imagem": "assets/images/background-praca.jpg"
+    "image": "assets/images/background-praca.jpg",
+    "rating": 4.8,
+    "ratings": 120,
+    "destaque": true
   },
   {
     "id": 2,
@@ -13,6 +16,9 @@
     "descricao": "O melhor lugar para conhecer a culinária mineira, comprar queijos, doces e artesanato.",
     "endereco": "Av. Augusto de Lima, 744 - Centro, Belo Horizonte - MG",
     "tags": ["gastronomia", "compras", "turismo"],
-    "imagem": "assets/images/logo.png"
+    "image": "assets/images/logo.png",
+    "rating": 4.7,
+    "ratings": 98,
+    "destaque": true
   }
 ]
