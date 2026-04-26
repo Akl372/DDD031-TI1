@@ -5,7 +5,7 @@ let filteredFaqData = [];
 async function carregarFAQdoServidor() {
   try {
     // Corrige o caminho: de public/assets/js para db/db.json
-    const response = await fetch('/faq');
+    const response = await fetch('./assets/data/faq.json');
     const data = await response.json();
     faqData = Array.isArray(data) ? data : [];
     filteredFaqData = [...faqData];

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "threadId": 1,
+    "author": "Matheus",
+    "date": "2026-04-20T11:00:00Z",
+    "content": "A Praça da Liberdade é clássica e muito bonita à noite!"
+  },
+  {
+    "id": 2,
+    "threadId": 2,
+    "author": "Alex",
+    "date": "2026-04-21T15:00:00Z",
+    "content": "O Bar da Lora é imperdível!"
+  }
+]

@@ -99,8 +99,8 @@
     const threadsEl = document.getElementById('threads');
     if (!threadsEl) return;
 
-    // get threads sorted by id desc
-    const threads = await fetchJSON('/threads?_sort=id&_order=desc');
+    // get threads
+    const threads = await fetchJSON('./assets/data/threads.json');
     threadsEl.innerHTML = '';
     threads.forEach(t => {
       const tpl = document.getElementById('threadItemTpl');
@@ -154,7 +154,8 @@
           authorEmail: user?.email || null,
           createdAt: new Date().toISOString()
         };
-        await fetchJSON('/posts', { method: 'POST', body: JSON.stringify(payload) });
+        // await fetchJSON('/posts', { method: 'POST', body: JSON.stringify(payload) });
+        alert('Funcionalidade de postagem desativada na versão estática.');
         postForm.reset();
         await renderPosts(t.id, postsDiv);
         // update replies count after posting
@@ -184,7 +185,8 @@
   }
 
   async function loadThreadPosts(threadId) {
-    return fetchJSON(`/posts?threadId=${encodeURIComponent(threadId)}&_sort=id&_order=asc`);
+    const allPosts = await fetchJSON('./assets/data/posts.json');
+    return allPosts.filter(p => p.threadId == threadId);
   }
 
   function renderPostsInto(posts, container) {
@@ -245,7 +247,8 @@
         tags,
         createdAt: new Date().toISOString()
       };
-      await fetchJSON('/threads', { method: 'POST', body: JSON.stringify(payload) });
+      // await fetchJSON('/threads', { method: 'POST', body: JSON.stringify(payload) });
+      alert('Funcionalidade de criação de tópicos desativada na versão estática.');
       form.reset();
       await loadThreads();
     });

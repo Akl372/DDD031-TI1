@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Como funciona o sistema de favoritos?",
+    "resposta": "Você pode favoritar seus lugares preferidos clicando no ícone de coração. Eles ficarão salvos no seu navegador."
+  },
+  {
+    "id": 2,
+    "pergunta": "O site é gratuito?",
+    "resposta": "Sim, o acesso a todas as informações de lugares e fórum é totalmente gratuito."
+  }
+]

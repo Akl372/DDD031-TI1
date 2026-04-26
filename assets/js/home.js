@@ -61,31 +61,15 @@ window.applyTagFilters = function(tags) {
 // ============================================
 
 function getFavoriteStorageKey() {
-    // A chave agora é específica para o ID do usuário
-    return `ddd031_favoritos_${usuarioLogadoId}`;
+    return `ddd031_favoritos_public`;
 }
 
 function carregarFavoritos() {
-    // Tenta carregar o ID do usuário logado antes de carregar favoritos
-    const usuarioCorrente = getUsuarioCorrente();
-    if (usuarioCorrente && usuarioCorrente.id) {
-        usuarioLogadoId = usuarioCorrente.id;
-    } else {
-        // Se não houver usuário logado, usamos um ID temporário para não quebrar, mas os favoritos não serão persistidos corretamente.
-        usuarioLogadoId = 0; 
-    }
-    
-    // Tenta carregar os favoritos do localStorage com a chave específica
     const saved = localStorage.getItem(getFavoriteStorageKey());
     favoritos = saved ? JSON.parse(saved) : [];
 }
 
 function salvarFavoritos() {
-    if (!usuarioLogadoId || usuarioLogadoId === 0) {
-        console.warn("Tentativa de salvar favoritos sem ID de usuário logado válido.");
-        return;
-    }
-    // Salva a lista atual de favoritos na chave específica do usuário
     localStorage.setItem(getFavoriteStorageKey(), JSON.stringify(favoritos));
 }
 
@@ -520,18 +504,11 @@ function mostrarDetalhes(lugar) {
 // Inicialização
 // ============================================
 
-function getUsuarioCorrente() {
-    const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
-    return usuarioCorrenteJSON ? JSON.parse(usuarioCorrenteJSON) : null;
-}
-
 async function inicializarDados() {
-    // Não é necessário verificar o login para a Home, mas precisamos do ID para os favoritos
     carregarFavoritos();
     
     try {
-        // Faz a requisição para o endpoint de lugares
-        const response = await fetch('/places'); 
+        const response = await fetch('./assets/data/places.json'); 
         
         if (!response.ok) {
             throw new Error(`Erro de rede: ${response.status}`);
@@ -539,7 +516,6 @@ async function inicializarDados() {
         
         lugares = await response.json(); 
         
-        // Aplica filtros pendentes vindos do sessionStorage (ex.: quando o usuário escolheu filtros na navbar e foi redirecionado)
         const pending = sessionStorage.getItem('selectedTagFilters');
         if (pending) {
             try {
@@ -551,14 +527,13 @@ async function inicializarDados() {
             sessionStorage.removeItem('selectedTagFilters');
         }
         
-        // Renderiza a aplicação
         renderizarApp();
 
     } catch (error) {
         console.error("Falha ao carregar os dados:", error);
         const root = document.getElementById('home-content');
         if (root) {
-            root.innerHTML = '<p>Erro ao carregar dados dos locais. Verifique se o JSON Server está rodando na porta 3000.</p>';
+            root.innerHTML = '<p>Erro ao carregar dados dos locais.</p>';
         }
     }
 }

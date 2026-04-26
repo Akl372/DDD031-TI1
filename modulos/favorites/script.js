@@ -13,28 +13,15 @@ let usuarioLogadoId = null;
 // ============================================
 
 function getFavoriteStorageKey() {
-    // A chave agora é específica para o ID do usuário
-    return `ddd031_favoritos_${usuarioLogadoId}`;
+    return `ddd031_favoritos_public`;
 }
 
 function carregarFavoritos() {
-    // Verifica se o usuárioLogadoId foi definido (deve ser no inicializarDados)
-    if (!usuarioLogadoId) {
-        favoritos = [];
-        return;
-    }
-    
-    // Tenta carregar os favoritos do localStorage com a chave específica
     const saved = localStorage.getItem(getFavoriteStorageKey());
     favoritos = saved ? JSON.parse(saved) : [];
 }
 
 function salvarFavoritos() {
-    if (!usuarioLogadoId) {
-        console.error("Tentativa de salvar favoritos sem ID de usuário logado.");
-        return;
-    }
-    // Salva a lista atual de favoritos na chave específica do usuário
     localStorage.setItem(getFavoriteStorageKey(), JSON.stringify(favoritos));
 }
 
@@ -316,23 +303,8 @@ function getUsuarioCorrente() {
 }
 
 async function inicializarDados() {
-    const usuarioCorrente = getUsuarioCorrente();
-
-    if (!usuarioCorrente || !usuarioCorrente.id) {
-        // RESTRIÇÃO DE ACESSO: Se não houver usuário logado, redireciona.
-        // Assumindo que LOGIN_URL está definido ou usando um valor padrão
-        const LOGIN_URL = "/modulos/login/login.html"; 
-        console.warn("Usuário não logado. Redirecionando para login.");
-        window.location.href = LOGIN_URL;
-        return; // Para a execução se não houver login
-    }
-    
-    // Atribui o ID do usuário logado
-    usuarioLogadoId = usuarioCorrente.id; 
-
     try {
-        // ... [Faz a requisição para o endpoint de lugares] ...
-        const response = await fetch('/places'); 
+        const response = await fetch('../../assets/data/places.json'); 
         
         if (!response.ok) {
             throw new Error(`Erro de rede: ${response.status}`);
@@ -340,15 +312,13 @@ async function inicializarDados() {
         
         lugares = await response.json(); 
         
-        // Carrega favoritos do localStorage (agora específico para o usuário)
         carregarFavoritos();
         
-        // Renderiza a aplicação (exibindo os favoritos do usuário)
         renderizarApp();
 
     } catch (error) {
         console.error("Falha ao carregar os dados:", error);
-        document.getElementById('favorites-page-div').innerHTML = '<p>Erro ao carregar dados dos locais. Verifique o servidor.</p>';
+        document.getElementById('favorites-page-div').innerHTML = '<p>Erro ao carregar dados dos locais.</p>';
     }
 }
 

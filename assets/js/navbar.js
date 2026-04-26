@@ -97,10 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if (navbarDiv) {
     navbarDiv.innerHTML = navbarContent;
     
-    // Chama showUserInfo após criar a navbar, se a função existir
-    if (typeof showUserInfo === 'function') {
-        showUserInfo('userInfo');
-    }
+    // showUserInfo removido (sistema de login desativado)
 
     // Wiring do input de busca: repassa termos para o home sem recarregar
     const searchInput = document.querySelector('.search-input');

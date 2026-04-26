@@ -41,13 +41,13 @@
     }
 
     try {
-      const res = await fetch('/places');
+      const res = await fetch('./assets/data/places.json');
       if (!res.ok) throw new Error('Failed to fetch places');
       places = await res.json();
     } catch (err) {
       console.error(err);
       const container = document.getElementById('roulette-container');
-      if (container) container.innerHTML = '<p>Erro ao carregar locais. Verifique se o JSON Server está rodando.</p>';
+      if (container) container.innerHTML = '<p>Erro ao carregar locais.</p>';
       return;
     }
 
